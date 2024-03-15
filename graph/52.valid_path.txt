@@ -77,7 +77,21 @@ Explanation 2:
  One of the path is (0, 0) -> (1, 0) -> (2, 0) -> (3, 0) -> (3, 1) -> (3, 2) -> (3, 3).
 
 //==========================================================================
+logic :-
 
+Check if (i,j) is a valid point for all 0<=i<=x, 0<=j<=y. By valid point we mean that none of the circle should contain it.
+
+To do this you can simply check for all points (i,j) where 0<=i<=x, 0<=j<=y if there is a circle on which this point.
+If a point lies on a circle it should satisfy that circle’s equation.((i-a)^2+(j-b)^2==r^2 where (a,b) is the centre of the circle and r is its radius)
+
+Now you know all the valid point in rectangle. You need to figure out if you can go from (0,0) to (x,y) through valid points. This can be done with any graph traversal algorithms like BFS/DFS.
+
+DFS ( i , j )
+mark (i,j) as visited
+for all (i’,j’) positions to where we can travel to from (i,j)
+DFS(i’,j’)
+
+Now we just have to check if (x,y) is visited or not. If it is visited then output YES otherwise NO.
 // bomb explosion problem - circle with center and radius is consider- unsafe zone . center is considered as the dropping point of bomb and the radius is  the unsafe area around the center . so try to see if you can reach from the (0,0) till the (x,y) , without need to go through the unsafe area. 
 x = 2;
 y = 3;
